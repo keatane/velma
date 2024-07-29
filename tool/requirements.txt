@@ -1,0 +1,6 @@
+requests
+bs4
+reportlab
+mysql-connector
+nvdlib
+colorama

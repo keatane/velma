@@ -1,0 +1,66 @@
+services:
+
+  apache:
+    image: httpd:2.4
+    ports:
+      - 8888:80
+    volumes:
+      - ./apache:/usr/local/apache2/htdocs/
+
+  # wordpress:
+  #   image: wordpress
+  #   restart: always
+  #   ports:
+  #     - 80:80
+  #   environment:
+  #     WORDPRESS_DB_HOST: db
+  #     WORDPRESS_DB_USER: user
+  #     WORDPRESS_DB_PASSWORD: password
+  #     WORDPRESS_DB_NAME: generic_db
+  #   volumes:
+  #     - wordpress:/var/www/html
+
+  wordpress_vuln:
+    image: wordpress:6.3
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: generic_db
+    volumes:
+      - wordpress:/var/www/html
+
+  joomla:
+    image: joomla
+    restart: always
+    ports:
+      - 9999:80
+    environment:
+      JOOMLA_DB_HOST: db
+      JOOMLA_DB_USER: user  
+      JOOMLA_DB_PASSWORD: password
+      JOOMLA_DB_NAME: generic_db
+    volumes:
+      - joomla:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: generic_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  wordpress:
+  wordpress_old:
+  joomla:
+  db:

@@ -1,0 +1,7 @@
+{
+  "apache": "cpe:2.3:a:apache:http_server:*",
+  "php": "cpe:2.3:a:php:php:*",
+  "mysql": "cpe:2.3:a:mysql:mysql:*",
+  "wordpress": "cpe:2.3:a:wordpress:wordpress:*",
+  "joomla": "cpe:2.3:a:joomla:joomla:*"
+}
